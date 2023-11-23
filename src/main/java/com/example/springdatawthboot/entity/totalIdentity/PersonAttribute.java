@@ -13,29 +13,31 @@ import java.sql.Blob;
 
 @Entity
 @Table(name = "PersonAttribute")
-public class PersonAttribute implements Serializable {
+public class PersonAttribute {
     @Id
-    @GenericGenerator(name = "personAttribute_generator",
-            strategy = "enhanced-sequence",
-        parameters = {
-            @Parameter(
-                    name = "sequence_name",
-                    value = "personAttribute_SEQ_Generator"
-            ),
-            @Parameter(
-                    name = "initial_value",
-                    value = "1"
-            ),
-            @Parameter(
-                    name = "increment_size",
-                    value = "6"
-            )})
-    @GeneratedValue(generator = "personAttribute_generator")
+//    @GenericGenerator(name = "personAttribute_generator",
+//            strategy = "enhanced-sequence",
+//        parameters = {
+//            @Parameter(
+//                    name = "sequence_name",
+//                    value = "PersonAttribute_seq"
+//            ),
+//            @Parameter(
+//                    name = "initial_value",
+//                    value = "1"
+//            ),
+//            @Parameter(
+//                    name = "increment_size",
+//                    value = "6"
+//            )})
+//    @GeneratedValue(generator = "personAttribute_generator")
     private Long id;
-
 
     @Column(name = "Image", columnDefinition = "varbinary(max)")
     private byte[] image;
+
+    @Column(name = "PersonId", columnDefinition = "bigint")
+    private Long personId;
 
 
     public Long getId() {
@@ -52,6 +54,14 @@ public class PersonAttribute implements Serializable {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
     }
 
 }
