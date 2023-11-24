@@ -49,7 +49,7 @@ public class PersonController {
         } catch (IOException e){
             throw new RuntimeException(e);
         }
-        person.setName("ali");
+        person.setName("wazsxedcrfvtgybhunjmik");
         person.setImages(bytes);
 
         person = personService.insert(person);
