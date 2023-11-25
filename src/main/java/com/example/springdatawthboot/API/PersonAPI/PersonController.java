@@ -4,8 +4,7 @@ package com.example.springdatawthboot.API.PersonAPI;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 import com.example.springdatawthboot.entity.totalIdentity.Person;
 import com.example.springdatawthboot.service.totalIdentity.PersonService;
@@ -33,7 +32,7 @@ public class PersonController {
 
     public Person saveWithAttribute(){
         Person person = new Person();
-        List<byte[]> bytes = new ArrayList<>();
+        Map<byte[], String> bytes = new HashMap<>();
         List<File> files = new ArrayList<>();
         files.add(new File("D:\\Pictures\\snip&sketch\\Capture.PNG"));
         files.add(new File("D:\\Pictures\\snip&sketch\\CaptureOne.PNG"));
@@ -42,14 +41,15 @@ public class PersonController {
             for (File file: files) {
 
                 try (FileInputStream fileInputStream = new FileInputStream(file)) {
-                    bytes.add(fileInputStream.readAllBytes());
+                    bytes.put(fileInputStream.readAllBytes(),
+                            Arrays.asList(file.getName().split("\\.", 0)).get(1));
                 }
             }
 
         } catch (IOException e){
             throw new RuntimeException(e);
         }
-        person.setName("wazsxedcrfvtgybhunjmik");
+        person.setName("alloooooo");
         person.setImages(bytes);
 
         person = personService.insert(person);
