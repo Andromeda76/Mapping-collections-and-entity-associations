@@ -3,6 +3,7 @@ package com.example.springdatawthboot.entity.totalIdentity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.hibernate.annotations.Parent;
 import org.hibernate.engine.jdbc.BlobImplementer;
 import org.hibernate.type.descriptor.java.BlobJavaType;
 import org.hibernate.type.descriptor.jdbc.VarbinaryJdbcType;
