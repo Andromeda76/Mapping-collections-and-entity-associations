@@ -26,7 +26,6 @@ public class PersonMap {
         PersonAddress personAddress = new PersonAddress();
         personAddress.setZipCode("745621");
         personAddress.setStreet("foruzanfar");
-        personAddress.setPerson(person);
         person.setAddress(personAddress);
         person.setName("ali");
 

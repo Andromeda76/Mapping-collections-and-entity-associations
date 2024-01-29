@@ -11,14 +11,26 @@ import org.hibernate.annotations.Parameter;
 public class PersonAddress {
 
     @Id
-    @GenericGenerator(
-            name = "personAddressPrimaryKeyGenerator",
-            strategy = "foreign",
-            parameters =
-                    @Parameter(
-                            name = "property", value = "person"
+    @GenericGenerator(name = "personAddressPrimaryKeyGenerator",
+            strategy = "enhanced-sequence",
+            parameters = {
+                    @org.hibernate.annotations.Parameter(
+                            name = "sequence_name",
+                            value = "PersonAddress_seq"
+                    ),
+                    @org.hibernate.annotations.Parameter(
+                            name = "initial_value",
+                            value = "1"
+                    ),
+                    @org.hibernate.annotations.Parameter(
+                            name = "increment_size",
+                            value = "1"
                     )
-    )
+                    /**
+                     * we've also set an initial value for the sequence, which means
+                     * the primary key generation will start at 4.
+                     */
+            })
     @GeneratedValue(generator = "personAddressPrimaryKeyGenerator")
     private Long id;
 
